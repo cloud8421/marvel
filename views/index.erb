@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app="marvel">
+<head>
+  <meta charset="utf-8">
+  <title>Marvel Characters Explorer</title>
+  <link rel="stylesheet" href="/styles/app.css"/>
+  <script>
+    window.MarvelApiKey = "<%= ENV['MARVEL_API_KEY'] %>"
+  </script>
+</head>
+<body>
+  <div id="main" ng-controller="CharactersCtrl">
+    <aside>
+      <ul >
+        <li ng-repeat="character in characters" ng-click="select(character)">
+          {{ character.name }}
+        </li>
+      </ul>
+    </aside>
+    <section ng-if="currentCharacter">
+      <h1>{{ currentCharacter.name }}</h1>
+      <img src="{{ thumbnailFor(currentCharacter) }}" alt="{{ currentCharacter.name }}">
+    </section>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+  <script src="/scripts/vendor/angular-resource.min.js"></script>
+  <script src="/scripts/controllers.js"></script>
+  <script src="/scripts/services.js"></script>
+  <script src="/scripts/app.js"></script>
+</body>
+</html>
