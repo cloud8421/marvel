@@ -11,17 +11,19 @@
 <body>
   <div id="main" ng-controller="CharactersCtrl">
     <aside>
-      <ul>
-        <li><a href="#" ng-click="next()">Next</a></li>
-        <li><a href="#" ng-click="prev()">Prev</a></li>
-      </ul>
-      <ul >
+      <nav>
+        <ul>
+          <li><a href="#" ng-click="prev()">Prev</a></li>
+          <li><a href="#" ng-click="next()">Next</a></li>
+        </ul>
+      </nav>
+      <ul class="characters">
         <li ng-repeat="character in characters" ng-click="select(character)">
           {{ character.name }}
         </li>
       </ul>
     </aside>
-    <section ng-if="currentCharacter">
+    <section class="current-character" ng-if="currentCharacter">
       <h1>{{ currentCharacter.name }}</h1>
       <img ng-src="{{ thumbnailFor(currentCharacter) }}" alt="{{ currentCharacter.name }}">
     </section>
