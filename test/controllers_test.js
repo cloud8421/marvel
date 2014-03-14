@@ -73,4 +73,36 @@ describe("Sample test", function() {
 
   });
 
+  describe("Search", function() {
+
+    beforeEach(function() {
+      spyOn(characters, 'all');
+    });
+
+    it("doesn't send the search term if empty", function() {
+      this.scope.searchTerm = ''
+      this.scope.search()
+      expect(characters.all).toHaveBeenCalledWith({offset: 0});
+    });
+
+    it("searches for the given string", function() {
+      this.scope.searchTerm = 'cap'
+      this.scope.search()
+      expect(characters.all).toHaveBeenCalledWith({
+        offset: 0,
+        nameStartsWith: 'cap'
+      });
+    });
+
+    it("handles pagination with a search term", function() {
+      this.scope.searchTerm = 'cap'
+      this.scope.next();
+      expect(characters.all).toHaveBeenCalledWith({
+        offset: 20,
+        nameStartsWith: 'cap'
+      });
+    });
+
+  });
+
 });
