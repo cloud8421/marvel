@@ -31,7 +31,7 @@ The simplest option is to reverse proxy using [Pow](http://pow.cx) or similar. F
 
 ## Heroku deployment
 
-Assuming you're calling the new app `my-landmarks-app`
+Assuming you're calling the new app `my-marvel-app`
 
     $ heroku create my-marvel-app
     $ heroku config:set MARVEL_API_KEY=your-api-key RACK_ENV=production --app my-marvel-app
