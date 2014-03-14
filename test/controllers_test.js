@@ -48,4 +48,29 @@ describe("Sample test", function() {
     expect(this.scope.thumbnailFor(firstCharacter)).toEqual(expectedThumbnail);
   });
 
+  describe("Paginating results", function() {
+
+    beforeEach(function() {
+      spyOn(characters, 'all');
+    });
+
+    it("paginates next", function() {
+      this.scope.next();
+      expect(characters.all).toHaveBeenCalledWith({offset: 20});
+    });
+
+    it("paginates prev", function() {
+      this.scope.offset = 40;
+      this.scope.prev();
+      expect(characters.all).toHaveBeenCalledWith({offset: 20});
+    });
+
+    it("doesn't send negative offset", function() {
+      this.scope.offset = 0;
+      this.scope.prev();
+      expect(characters.all).toHaveBeenCalledWith({offset: 0});
+    });
+
+  });
+
 });

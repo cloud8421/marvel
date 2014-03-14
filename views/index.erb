@@ -11,6 +11,10 @@
 <body>
   <div id="main" ng-controller="CharactersCtrl">
     <aside>
+      <ul>
+        <li><a href="#" ng-click="next()">Next</a></li>
+        <li><a href="#" ng-click="prev()">Prev</a></li>
+      </ul>
       <ul >
         <li ng-repeat="character in characters" ng-click="select(character)">
           {{ character.name }}
@@ -19,7 +23,7 @@
     </aside>
     <section ng-if="currentCharacter">
       <h1>{{ currentCharacter.name }}</h1>
-      <img src="{{ thumbnailFor(currentCharacter) }}" alt="{{ currentCharacter.name }}">
+      <img ng-src="{{ thumbnailFor(currentCharacter) }}" alt="{{ currentCharacter.name }}">
     </section>
   </div>
   <script src="/scripts/vendor/angular.min.js"></script>
