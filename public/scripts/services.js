@@ -11,6 +11,7 @@
       return $resource(url, {}, {
         all: {
           method: 'GET',
+          cache: true,
           isArray: true,
           responseType: 'json',
           transformResponse: function(response) {
