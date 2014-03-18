@@ -1,23 +1,35 @@
-describe("Sample test", function() {
+describe("Characters controllers test", function() {
 
   var characters = {
     all: function() {
       return [
         {
+          id: 101,
           thumbnail: {
             path: 'foo',
             extension: 'bar'
           }
         },
         {
+          id: 102,
           thumbnail: {
             path: 'baz',
             extension: 'gah'
           }
         }
-      ]
+      ];
+    },
+    find: function() {
+      return [
+        {
+          thumbnail: {
+            path: 'foo',
+            extension: 'bar'
+          }
+        }
+      ];
     }
-  }
+  };
 
   var firstCharacter = characters.all()[0];
 
@@ -38,10 +50,24 @@ describe("Sample test", function() {
     expect(this.scope.characters.length).toEqual(2);
   });
 
-  it("can select a character", function() {
-    this.scope.select(firstCharacter);
-    expect(this.scope.currentCharacter).toEqual(firstCharacter);
-  });
+  describe("Current character", function() {
+
+    beforeEach(function() {
+      spyOn(characters, 'find');
+      this.scope.select(firstCharacter);
+    });
+
+    it("can select a character", function() {
+      expect(this.scope.currentCharacter).toEqual(firstCharacter);
+    });
+
+    it("fetches the character detail", function() {
+      expect(characters.find).toHaveBeenCalledWith({id: 101});
+    });
+
+    it("sets the current character detail", function() {
+      expect(this.scope.currentCharacterDetail).toEqual(characters.find());
+    });
 
   });
 
@@ -77,14 +103,14 @@ describe("Sample test", function() {
     });
 
     it("doesn't send the search term if empty", function() {
-      this.scope.searchTerm = ''
-      this.scope.search()
+      this.scope.searchTerm = '';
+      this.scope.search();
       expect(characters.all).toHaveBeenCalledWith({offset: 0});
     });
 
     it("searches for the given string", function() {
-      this.scope.searchTerm = 'cap'
-      this.scope.search()
+      this.scope.searchTerm = 'cap';
+      this.scope.search();
       expect(characters.all).toHaveBeenCalledWith({
         offset: 0,
         nameStartsWith: 'cap'
@@ -92,7 +118,7 @@ describe("Sample test", function() {
     });
 
     it("handles pagination with a search term", function() {
-      this.scope.searchTerm = 'cap'
+      this.scope.searchTerm = 'cap';
       this.scope.next();
       expect(characters.all).toHaveBeenCalledWith({
         offset: 20,

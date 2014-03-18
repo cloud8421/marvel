@@ -13,7 +13,7 @@ describe("Characters filters test", function() {
     var thumbnail = {
       path: 'http://example.com/sample',
       extension: 'jpg'
-    }
+    };
     expect(this.urlForThumbnailFilter(thumbnail)).toEqual('http://example.com/sample.jpg');
   });
 
