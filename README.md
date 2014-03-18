@@ -2,6 +2,8 @@
 
 Learning Angular.js while using the [Marvel API](http://developer.marvel.com).
 
+[![Build Status](https://travis-ci.org/cloud8421/marvel.png?branch=master)](https://travis-ci.org/cloud8421/marvel)
+
 ## Setup
 
 This project requires a working installation of Ruby (>= 1.9).
