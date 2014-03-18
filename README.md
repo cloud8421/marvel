@@ -31,15 +31,17 @@ The simplest option is to reverse proxy using [Pow](http://pow.cx) or similar. F
 
 ## Testing
 
-Tests are managed with Karma. Assuming you have a working Node installation, you need to:
+Tests are managed with Karma and npm. Assuming you have a working Node installation, you need to:
 
-    $ npm install -g karma karma-firefox-launcher karma-coverage
+    $ npm install
 
 After that, you can start the test watcher with:
 
-    $ karma start
+    $ npm start
 
-Code coverage is available in `/coverage`.
+One-off runs are possible with:
+
+    $ npm test
 
 ## Heroku deployment
 

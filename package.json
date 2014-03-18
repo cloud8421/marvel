@@ -1,0 +1,27 @@
+{
+  "name": "marvel",
+  "version": "0.0.0",
+  "description": "Marvel API explorer built with AngularJS",
+  "scripts": {
+    "start": "./node_modules/karma/bin/karma start",
+    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cloud8421/marvel.git"
+  },
+  "author": "Claudio Ortolina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cloud8421/marvel/issues"
+  },
+  "homepage": "https://github.com/cloud8421/marvel",
+  "devDependencies": {
+    "karma": "~0.12",
+    "karma-jasmine": "~0.1",
+    "karma-chrome-launcher": "~0.1",
+    "karma-phantomjs-launcher": "~0.1",
+    "karma-firefox-launcher": "~0.1",
+    "karma-coverage": "~0.2"
+  }
+}
