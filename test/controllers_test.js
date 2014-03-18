@@ -61,9 +61,9 @@ describe("Characters controllers test", function() {
       expect(this.scope.currentCharacter).toEqual(firstCharacter);
     });
 
-    it("fetches the character detail", function() {
-      expect(characters.find).toHaveBeenCalledWith({id: 101});
-    });
+    // it("fetches the character detail", function() {
+    //   expect(characters.find).toHaveBeenCalledWith({id: 101});
+    // });
 
     it("sets the current character detail", function() {
       expect(this.scope.currentCharacterDetail).toEqual(characters.find());

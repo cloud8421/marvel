@@ -26,7 +26,7 @@
 
       $scope.select = function(character) {
         $scope.currentCharacter = character;
-        $scope.currentCharacterDetail = Characters.find({id: character.id});
+        // $scope.currentCharacterDetail = Characters.find({id: character.id});
       };
 
       $scope.next = function() {
