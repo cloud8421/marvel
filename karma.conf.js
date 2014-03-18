@@ -19,6 +19,7 @@ module.exports = function(config) {
       'public/scripts/vendor/angular-resource.min.js',
       'public/scripts/**/*.js',
       'test/support/*.js',
+      'test/fixtures/*.js',
       'test/**/*_test.js'
     ],
 
