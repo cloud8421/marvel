@@ -29,6 +29,18 @@ The simplest option is to reverse proxy using [Pow](http://pow.cx) or similar. F
 
 - Open <http://marvel.dev> in your browser
 
+## Testing
+
+Tests are managed with Karma. Assuming you have a working Node installation, you need to:
+
+    $ npm install -g karma karma-firefox-launcher karma-coverage
+
+After that, you can start the test watcher with:
+
+    $ karma start
+
+Code coverage is available in `/coverage`.
+
 ## Heroku deployment
 
 Assuming you're calling the new app `my-marvel-app`
