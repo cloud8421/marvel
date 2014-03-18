@@ -21,12 +21,14 @@
       <ul class="characters">
         <li ng-repeat="character in characters" ng-click="select(character)">
           {{ character.name }}
+          <span class="comics-count">{{ character.comics.available }}</span>
         </li>
       </ul>
     </aside>
     <section class="current-character" ng-if="currentCharacter">
       <h1>{{ currentCharacter.name }}</h1>
       <img ng-src="{{ currentCharacter.thumbnail | urlForThumbnail }}" alt="{{ currentCharacter.name }}">
+      <p>{{ currentCharacter.description }}</p>
     </section>
   </div>
   <script src="/scripts/vendor/angular.min.js"></script>

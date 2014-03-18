@@ -17,6 +17,7 @@ nav ul li {
 }
 
 .characters li {
+  position: relative;
   list-style-type: none;
   border-bottom: 1px solid #CCC;
   line-height: 2em;
@@ -25,6 +26,16 @@ nav ul li {
 
 .characters li:hover {
   background-color: #DDD;
+}
+
+.characters li .comics-count {
+  position: absolute;
+  right: 0;
+  color: white;
+  background-color: #F0141E;
+  line-height: 1em;
+  margin: 0.3em 0;
+  padding: 0.2em 0.4em;
 }
 
 .current-character {
