@@ -1,1 +1,1 @@
-angular.module('marvel', [ 'marvel.controllers', 'marvel.repo' ]);
+angular.module('marvel', [ 'marvel.controllers', 'marvel.repo', 'marvel.filters' ]);

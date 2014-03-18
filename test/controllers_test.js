@@ -43,9 +43,6 @@ describe("Sample test", function() {
     expect(this.scope.currentCharacter).toEqual(firstCharacter);
   });
 
-  it("generates a thumbnail", function() {
-    expectedThumbnail = 'foo.bar';
-    expect(this.scope.thumbnailFor(firstCharacter)).toEqual(expectedThumbnail);
   });
 
   describe("Paginating results", function() {
