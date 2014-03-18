@@ -5,6 +5,15 @@
     return offset < 0 ? 0 : offset;
   }
 
+  function getCharacters(scope, Characters) {
+    var params = {};
+    params.offset = scope.offset;
+    if (scope.searchTerm) {
+      params.nameStartsWith = scope.searchTerm;
+    }
+    scope.characters = Characters.all(params);
+  }
+
   var marvelControllers = angular.module('marvel.controllers', []);
 
   marvelControllers.controller('CharactersCtrl', ['$scope', 'Characters',
@@ -13,16 +22,7 @@
       $scope.searchTerm = null;
       $scope.currentCharacter = null;
 
-      function getCharacters() {
-        var params = {};
-        params.offset = $scope.offset;
-        if ($scope.searchTerm) {
-          params.nameStartsWith = $scope.searchTerm;
-        }
-        $scope.characters = Characters.all(params);
-      }
-
-      getCharacters();
+      getCharacters($scope, Characters);
 
       $scope.select = function(character) {
         $scope.currentCharacter = character;
@@ -30,17 +30,17 @@
 
       $scope.next = function() {
         $scope.offset += 20;
-        getCharacters();
+        getCharacters($scope, Characters);
       }
 
       $scope.prev = function() {
         $scope.offset = normalizeOffset($scope.offset - 20);
-        getCharacters();
+        getCharacters($scope, Characters);
       }
 
       $scope.search = function() {
         $scope.offset = 0;
-        getCharacters();
+        getCharacters($scope, Characters);
       }
 
     }]);
