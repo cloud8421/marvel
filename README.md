@@ -33,13 +33,21 @@ The simplest option is to reverse proxy using [Pow](http://pow.cx) or similar. F
 
 ## Testing
 
-Tests are managed with Karma and npm. Assuming you have a working Node installation, you need to:
+Tests are managed with Karma, Protractor and npm. Assuming you have a working Node installation, you need to:
 
     $ npm install
 
+Then, make sure you have webdriver installed:
+
+    $ make install_webdriver
+
+And run it:
+
+    $ make start_webdriver
+
 After that, you can start the test watcher with:
 
-    $ npm start
+    $ make watch
 
 One-off runs are possible with:
 
