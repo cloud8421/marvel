@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "description": "Marvel API explorer built with AngularJS",
   "scripts": {
-    "start": "./node_modules/karma/bin/karma start",
-    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
+    "test": "make ci"
   },
   "repository": {
     "type": "git",
@@ -22,6 +21,7 @@
     "karma-chrome-launcher": "~0.1",
     "karma-phantomjs-launcher": "~0.1",
     "karma-firefox-launcher": "~0.1",
-    "karma-coverage": "~0.2"
+    "karma-coverage": "~0.2",
+    "protractor": "~0.20.1"
   }
 }
