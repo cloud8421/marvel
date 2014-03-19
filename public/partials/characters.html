@@ -7,9 +7,9 @@
     </ul>
   </nav>
   <ul class="characters">
-    <li ng-repeat="character in characters" ng-click="select(character)">
-    {{ character.name }}
-    <span class="comics-count">{{ character.comics.available }}</span>
+    <li ng-repeat="character in characters" >
+    <span class="name" ng-click="select(character)">{{ character.name }}</span>
+    <a href="#/{{character.id}}/comics" class="comics-count">{{ character.comics.available }}</span>
     </li>
   </ul>
 </aside>

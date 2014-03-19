@@ -12,6 +12,10 @@ marvelApp.config(['$routeProvider',
         templateUrl: 'partials/characters.html',
         controller: 'CharactersCtrl'
       })
+      .when('/:characterId/comics', {
+        templateUrl: 'partials/comics.html',
+        controller: 'ComicsCtrl'
+      })
       .otherwise({
         redirectTo: '/characters'
       });

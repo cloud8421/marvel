@@ -16,7 +16,7 @@ nav ul li {
   margin: 0;
 }
 
-.characters li {
+.characters li, .comics li {
   position: relative;
   list-style-type: none;
   border-bottom: 1px solid #CCC;
@@ -24,7 +24,7 @@ nav ul li {
   cursor: pointer;
 }
 
-.characters li:hover {
+.characters li:hover, .comics li:hover{
   background-color: #DDD;
 }
 

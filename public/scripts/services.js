@@ -3,7 +3,6 @@
 
   var marvelRepo = angular.module('marvel.repo', ['ngResource']);
 
-  // Characters Factory
   marvelRepo.factory('Characters', ['$resource',
     function($resource) {
 
@@ -37,4 +36,27 @@
         }
       });
     }]);
+
+  marvelRepo.factory('Comics', ['$resource',
+    function($resource) {
+
+      var baseUrl = 'http://gateway.marvel.com/v1/public';
+
+      return $resource(baseUrl, {}, {
+        byCharacter: {
+          url: baseUrl + '/characters/:id/comics',
+          method: 'GET',
+          params: {
+            apikey: MarvelApiKey
+          },
+          cache: true,
+          isArray: true,
+          responseType: 'json',
+          transformResponse: function(response) {
+            return response.data.results;
+          }
+        }
+      });
+   }]);
+
 })();

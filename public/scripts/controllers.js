@@ -45,4 +45,11 @@
       }
 
     }]);
+
+  marvelControllers.controller('ComicsCtrl', ['$scope', 'Comics', '$routeParams',
+    function($scope, Comics, $routeParams) {
+      $scope.characterId = $routeParams.characterId;
+      $scope.comics = Comics.byCharacter({id: $scope.characterId});
+    }]);
+
 })();
