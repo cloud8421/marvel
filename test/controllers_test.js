@@ -27,7 +27,6 @@ describe("Characters controllers test", function() {
   });
 
   describe("Current character", function() {
-
     beforeEach(function() {
       spyOn(characters, 'find');
       scope.select(firstCharacter);
@@ -44,11 +43,9 @@ describe("Characters controllers test", function() {
     it("sets the current character detail", function() {
       expect(scope.currentCharacterDetail).toEqual(characters.find());
     });
-
   });
 
   describe("Paginating results", function() {
-
     beforeEach(function() {
       spyOn(characters, 'all');
     });
@@ -69,11 +66,9 @@ describe("Characters controllers test", function() {
       scope.prev();
       expect(characters.all).toHaveBeenCalledWith({offset: 0});
     });
-
   });
 
   describe("Search", function() {
-
     beforeEach(function() {
       spyOn(characters, 'all');
     });
@@ -101,7 +96,6 @@ describe("Characters controllers test", function() {
         nameStartsWith: 'cap'
       });
     });
-
   });
 
 });

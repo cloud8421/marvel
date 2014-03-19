@@ -1,5 +1,4 @@
 describe("Services test", function() {
-
   describe("Characters Service", function() {
     var httpBackend, service, response;
 
@@ -34,7 +33,5 @@ describe("Services test", function() {
       httpBackend.flush();
       expect(character.id).toEqual(101);
     });
-
   });
-
 });
