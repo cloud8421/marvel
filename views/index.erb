@@ -9,30 +9,10 @@
   </script>
 </head>
 <body>
-  <div id="main" ng-controller="CharactersCtrl">
-    <aside>
-      <nav>
-        <ul>
-          <input type="search" ng-change="search()" ng-model="searchTerm">
-          <li><a href="#" ng-click="prev()">Prev</a></li>
-          <li><a href="#" ng-click="next()">Next</a></li>
-        </ul>
-      </nav>
-      <ul class="characters">
-        <li ng-repeat="character in characters" ng-click="select(character)">
-          {{ character.name }}
-          <span class="comics-count">{{ character.comics.available }}</span>
-        </li>
-      </ul>
-    </aside>
-    <section class="current-character" ng-if="currentCharacter">
-      <h1>{{ currentCharacter.name }}</h1>
-      <img ng-src="{{ currentCharacter.thumbnail | urlForThumbnail }}" alt="{{ currentCharacter.name }}">
-      <p>{{ currentCharacter.description }}</p>
-    </section>
-  </div>
+  <div id="main" ng-view></div>
   <script src="/scripts/vendor/angular.min.js"></script>
   <script src="/scripts/vendor/angular-resource.min.js"></script>
+  <script src="/scripts/vendor/angular-route.min.js"></script>
   <script src="/scripts/controllers.js"></script>
   <script src="/scripts/services.js"></script>
   <script src="/scripts/filters.js"></script>
