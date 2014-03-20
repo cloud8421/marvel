@@ -58,6 +58,6 @@ One-off runs are possible with:
 Assuming you're calling the new app `my-marvel-app`
 
     $ heroku create my-marvel-app
-    $ heroku config:set MARVEL_API_KEY=your-api-key RACK_ENV=production --app my-marvel-app
+    $ heroku config:set MARVEL_API_KEY=your-api-key RACK_ENV=production PUMA_THREADS=4 --app my-marvel-app
     $ git push heroku master
     $ heroku open

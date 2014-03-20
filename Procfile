@@ -1,1 +1,1 @@
-web: bundle exec puma -p $PORT -t 2:$PUMA_THREADS
+web: bundle exec puma -p $PORT -t 4:$PUMA_THREADS
