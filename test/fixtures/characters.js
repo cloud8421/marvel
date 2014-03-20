@@ -34,6 +34,20 @@
           }
         ]
       }
-    });
+    })
+    .value('comicsJSON', {
+      data: {
+        results: [
+          {
+            id: 101,
+            title: 'Avengers: the initiative 101'
+          },
+          {
+            id: 102,
+            title: 'Avengers: the initiative 102'
+          }
+        ]
+      }
+    })
 
 })();

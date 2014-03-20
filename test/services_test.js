@@ -1,11 +1,13 @@
 describe("Services test", function() {
+  var httpBackend, service, response;
+  window.MarvelApiKey = 'xxx';
+
+  beforeEach(function() {
+    module('marvel.repo', 'marvel.fixtures');
+  });
+
   describe("Characters Service", function() {
-    var httpBackend, service, response;
-
     beforeEach(function() {
-      window.MarvelApiKey = 'xxx';
-      module('marvel.repo', 'marvel.fixtures');
-
       inject(function($httpBackend, Characters) {
         httpBackend = $httpBackend;
         service = Characters;
@@ -34,4 +36,25 @@ describe("Services test", function() {
       expect(character.id).toEqual(101);
     });
   });
+
+  describe("Comics Service", function() {
+    beforeEach(function() {
+      inject(function($httpBackend, Comics) {
+        httpBackend = $httpBackend;
+        service = Comics;
+      });
+    });
+
+    it("gets all comics for a given character", function() {
+      inject(function(comicsJSON) {
+        response = comicsJSON;
+      });
+      httpBackend.whenGET(/\/101\/comics/).respond(response);
+
+      var comics = service.byCharacter({id: 101});
+      httpBackend.flush();
+      expect(comics.length).toEqual(2);
+    });
+  });
+
 });
