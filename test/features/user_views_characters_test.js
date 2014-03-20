@@ -1,9 +1,12 @@
+var CharactersPage = require('./page-objects/characters-page');
+
 describe('User views characters', function() {
 
   it('shows the characters list', function() {
-    browser.get('/');
-    var firstCharacterName = element(by.repeater('character in characters').row(0).column('name'));
-    expect(firstCharacterName.getText()).toEqual('Hank Pym');
+    var charactersPage = new CharactersPage();
+    charactersPage.get();
+    expect(charactersPage.firstCharacter().isPresent()).toBe(true);
+    expect(charactersPage.firstCharacterName()).toEqual('Hank Pym');
   });
 
 });
