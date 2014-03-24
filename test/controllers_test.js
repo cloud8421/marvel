@@ -2,7 +2,7 @@ describe("Controllers", function() {
   var scope, controller;
 
   beforeEach(function() {
-    module('marvel.controllers', 'marvel.fixtures');
+    module('marvel.controllers', 'marvel.fixtures', 'marvel.repo');
   });
 
   describe("Characters controller", function() {
@@ -108,7 +108,7 @@ describe("Controllers", function() {
     var comics;
 
     beforeEach(function() {
-      inject(function($rootScope, $controller, comicsJSON) {
+      inject(function($rootScope, $controller, WishListItems, comicsJSON) {
         comics = {
           byCharacter: function() {
             return comicsJSON.data.results;
