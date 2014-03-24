@@ -46,10 +46,16 @@
 
     }]);
 
-  marvelControllers.controller('ComicsCtrl', ['$scope', 'Comics', '$routeParams',
-    function($scope, Comics, $routeParams) {
+  marvelControllers.controller('ComicsCtrl', ['$scope', 'Comics', 'WishListItems', '$routeParams',
+    function($scope, Comics, WishListItems, $routeParams) {
       $scope.characterId = $routeParams.characterId;
       $scope.comics = Comics.byCharacter({id: $scope.characterId});
+
+      $scope.addToWishList = function(comic) {
+        WishListItems.create({
+          id: comic.id
+        });
+      }
     }]);
 
 })();

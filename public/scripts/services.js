@@ -59,4 +59,16 @@
       });
    }]);
 
+  marvelRepo.factory('WishListItems', ['$resource',
+    function($resource) {
+
+      return $resource('/wish_list_items', {}, {
+        create: {
+          method: 'POST',
+          responseType: 'json'
+        }
+      });
+    }
+  ]);
+
 })();

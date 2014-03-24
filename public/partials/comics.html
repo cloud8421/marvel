@@ -1,5 +1,5 @@
 <ul class="comics">
   <li ng-repeat="comic in comics">
-    <span class="title">{{ comic.title }}</span>
+    <span class="title" ng-click="addToWishList(comic)">{{ comic.title }}</span>
   </li>
 </ul>
