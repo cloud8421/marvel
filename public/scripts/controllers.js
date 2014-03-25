@@ -53,9 +53,7 @@
       $scope.wishListItems = WishListItems.all();
 
       $scope.addToWishList = function(comic) {
-        WishListItems.create({
-          id: comic.id
-        });
+        WishListItems.add(comic);
         $scope.wishListItems = WishListItems.all();
       }
 

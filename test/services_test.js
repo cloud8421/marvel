@@ -58,11 +58,11 @@ describe("Services test", function() {
 
   });
 
-  describe("WishListItems Service", function() {
+  describe("WishListItemsSyncApi Service", function() {
     beforeEach(function() {
-      inject(function($httpBackend, WishListItems) {
+      inject(function($httpBackend, WishListItemsSyncApi) {
         httpBackend = $httpBackend;
-        service = WishListItems;
+        service = WishListItemsSyncApi;
       });
     });
 
@@ -76,6 +76,45 @@ describe("Services test", function() {
       httpBackend.flush();
       expect(wishListItems.length).toEqual(3);
     });
+  });
+
+  describe("WishListItems Service", function() {
+    var WishListItemsSyncApiMock = {
+      create: function(comic) {
+        return { comics: [ comic ] }
+      },
+      all: function() {
+        return [];
+      }
+    };
+    beforeEach(function() {
+      module('marvel.repo', function($provide) {
+        spyOn(WishListItemsSyncApiMock, 'create');
+        $provide.value('WishListItemsSyncApi', WishListItemsSyncApiMock);
+      });
+      inject(function(WishListItems) {
+        service = WishListItems;
+      });
+    });
+
+    describe("adding comics to the wish list", function() {
+      var comic = { id: 9999 };
+
+      beforeEach(function() {
+        service.add(comic);
+      });
+
+      it("adds the comic to the local list", function() {
+        expect(service.all().length).toEqual(1);
+        expect(service.all()[0]).toEqual(comic);
+      });
+
+      it("creates on the sync service", function() {
+        expect(WishListItemsSyncApiMock.create).toHaveBeenCalled();
+      });
+
+    });
+
   });
 
 });

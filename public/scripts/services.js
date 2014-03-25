@@ -59,7 +59,7 @@
       });
    }]);
 
-  marvelRepo.factory('WishListItems', ['$resource',
+  marvelRepo.factory('WishListItemsSyncApi', ['$resource',
     function($resource) {
 
       return $resource('/', {}, {
@@ -78,6 +78,23 @@
           }
         }
       });
+    }
+  ]);
+
+  marvelRepo.service('WishListItems', ['WishListItemsSyncApi',
+    function(WishListItemsSyncApi) {
+      var Store = function() {
+        this.items = WishListItemsSyncApi.all();
+      }
+      Store.prototype.add = function(item) {
+        this.items.push(item);
+        WishListItemsSyncApi.create(item);
+        return this.items;
+      }
+      Store.prototype.all = function() {
+        return this.items;
+      }
+      return new Store;
     }
   ]);
 

@@ -117,6 +117,9 @@ describe("Controllers", function() {
         wishListItems = {
           all: function() {
             return wishListItemsJSON.comics;
+          },
+          add: function(comic) {
+            return { comics: [ comic ] }
           }
         }
         scope = $rootScope.$new();
@@ -148,6 +151,15 @@ describe("Controllers", function() {
       var comicNotInTheList = { id: 99999 };
       expect(scope.inWishList(comicInTheList)).toBe(true);
       expect(scope.inWishList(comicNotInTheList)).toBe(false);
+    });
+
+    it("can add a comic to the wish list", function() {
+      var comic = { id: 12345 };
+      spyOn(wishListItems, 'add');
+      spyOn(wishListItems, 'all');
+      scope.addToWishList(comic);
+      expect(wishListItems.add).toHaveBeenCalledWith(comic);
+      expect(wishListItems.all).toHaveBeenCalled();
     });
 
   });
