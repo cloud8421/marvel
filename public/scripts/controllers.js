@@ -50,12 +50,22 @@
     function($scope, Comics, WishListItems, $routeParams) {
       $scope.characterId = $routeParams.characterId;
       $scope.comics = Comics.byCharacter({id: $scope.characterId});
+      $scope.wishListItems = WishListItems.all();
 
       $scope.addToWishList = function(comic) {
         WishListItems.create({
           id: comic.id
         });
+        $scope.wishListItems = WishListItems.all();
       }
+
+      $scope.inWishList = function(comic) {
+        var comicIds = $scope.wishListItems.map(function(comic) {
+          return comic.id
+        });
+        return comicIds.indexOf(comic.id) !== -1
+      }
+
     }]);
 
 })();

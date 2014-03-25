@@ -55,6 +55,27 @@ describe("Services test", function() {
       httpBackend.flush();
       expect(comics.length).toEqual(2);
     });
+
+  });
+
+  describe("WishListItems Service", function() {
+    beforeEach(function() {
+      inject(function($httpBackend, WishListItems) {
+        httpBackend = $httpBackend;
+        service = WishListItems;
+      });
+    });
+
+    it("gets the wish list items", function() {
+      inject(function(wishListItemsJSON) {
+        response = wishListItemsJSON;
+      });
+      httpBackend.whenGET(/wish_list_items/).respond(response);
+
+      var wishListItems = service.all();
+      httpBackend.flush();
+      expect(wishListItems.length).toEqual(3);
+    });
   });
 
 });

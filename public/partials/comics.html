@@ -1,5 +1,8 @@
+<p>Comics in wish list: {{ wishListItems | length }}</p>
 <ul class="comics">
   <li ng-repeat="comic in comics">
     <span class="title" ng-click="addToWishList(comic)">{{ comic.title }}</span>
+    <span class="in-wish-list" ng-if="inWishList(comic)">&#10003;</span>
+    <span class="in-wish-list" ng-if="!inWishList(comic)">&#10008;</span>
   </li>
 </ul>

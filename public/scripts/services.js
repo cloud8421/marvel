@@ -62,10 +62,20 @@
   marvelRepo.factory('WishListItems', ['$resource',
     function($resource) {
 
-      return $resource('/wish_list_items', {}, {
+      return $resource('/', {}, {
         create: {
+          url: 'wish_list_items',
           method: 'POST',
           responseType: 'json'
+        },
+        all: {
+          url: 'wish_list_items',
+          method: 'GET',
+          isArray: true,
+          responseType: 'json',
+          transformResponse: function(response) {
+            return response.comics;
+          }
         }
       });
     }

@@ -105,19 +105,25 @@ describe("Controllers", function() {
   });
 
   describe("Comics controller", function() {
-    var comics;
+    var comics, wishListItems;
 
     beforeEach(function() {
-      inject(function($rootScope, $controller, WishListItems, comicsJSON) {
+      inject(function($rootScope, $controller, comicsJSON, wishListItemsJSON) {
         comics = {
           byCharacter: function() {
             return comicsJSON.data.results;
           }
         };
+        wishListItems = {
+          all: function() {
+            return wishListItemsJSON.comics;
+          }
+        }
         scope = $rootScope.$new();
         controller = $controller('ComicsCtrl', {
           $scope: scope,
           Comics: comics,
+          WishListItems: wishListItems,
           $routeParams: {
             characterId: 101
           }
@@ -132,5 +138,17 @@ describe("Controllers", function() {
     it("sets the current character", function() {
       expect(scope.characterId).toEqual(101);
     });
+
+    it("gets the wishlist comics", function() {
+      expect(scope.wishListItems.length).toEqual(3);
+    });
+
+    it("can tell which comics are in the wish list", function() {
+      var comicInTheList = { id: 29217 };
+      var comicNotInTheList = { id: 99999 };
+      expect(scope.inWishList(comicInTheList)).toBe(true);
+      expect(scope.inWishList(comicNotInTheList)).toBe(false);
+    });
+
   });
 });

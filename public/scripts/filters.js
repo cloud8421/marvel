@@ -6,6 +6,11 @@
       return function(thumbnail) {
         return thumbnail.path + '.' + thumbnail.extension;
       }
+    })
+    .filter('length', function() {
+      return function(collection) {
+        return collection.length;
+      }
     });
 
 })();

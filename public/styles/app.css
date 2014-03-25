@@ -55,3 +55,8 @@ nav ul li {
   max-height: 40em;
   text-align: right;
 }
+
+.in-wish-list {
+  position: absolute;
+  right: 0.5em;
+}
